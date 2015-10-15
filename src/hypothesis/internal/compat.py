@@ -282,3 +282,10 @@ def update_code_location(code, newfile, newlineno):
     unpacked[CODE_FIELD_ORDER.index('co_filename')] = newfile
     unpacked[CODE_FIELD_ORDER.index('co_firstlineno')] = newlineno
     return type(code)(*unpacked)
+
+
+try:
+    from inspect import get_type_hints
+except ImportError:
+    def get_type_hints(f):
+        return {}
