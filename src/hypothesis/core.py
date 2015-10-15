@@ -305,7 +305,16 @@ def test_is_flaky(test, expected_repr):
     @functools.wraps(test)
     def test_or_flaky(*args, **kwargs):
         text_repr = arg_string(test, args, kwargs)
-        if text_repr == expected_repr:
+        if expected_repr is None:
+            raise Flaky(
+                (
+                    u'Hypothesis %s produces unreliable results: Errored '
+                    u' during value generation on the first call but on a '
+                    u'a subsequent one passed %s(%s)'
+                    u'This is most likely a bug in the strategy.'
+                ) % (test.__name__, test.__name__, text_repr,))
+
+        elif text_repr == expected_repr:
             raise Flaky(
                 (
                     u'Hypothesis %s(%s) produces unreliable results: Falsified'

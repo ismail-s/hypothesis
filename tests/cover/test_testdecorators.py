@@ -286,6 +286,21 @@ def test_errors_even_if_does_not_error_on_final_call():
         rude()
 
 
+def test_errors_flakily_if_errors_one_in_value_generation():
+    boomed = [0]
+
+    def boom_once(x):
+        boomed[0] += 1
+        assert boomed[0] != 1
+
+    @given(integers().map(boom_once))
+    def test(x):
+        pass
+    with raises(Flaky) as e:
+        test()
+    assert 'value generation' in e.value.args[0]
+
+
 class DifferentReprEachTime(object):
     counter = 0
 
