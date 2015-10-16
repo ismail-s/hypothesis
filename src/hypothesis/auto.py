@@ -3,7 +3,7 @@ from hypothesis.typeclass import TypeClass
 import hypothesis.strategies as st
 import typing as t
 from hypothesis.internal.compat import text_type, binary_type
-from hypothesis.conventions import UniqueIdentifier
+from hypothesis.utils.conventions import UniqueIdentifier
 
 
 Arbitrary = TypeClass()

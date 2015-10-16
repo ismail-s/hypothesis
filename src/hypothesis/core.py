@@ -524,6 +524,9 @@ def given(*generator_arguments, **generator_kwargs):
             def convert_to_specifier(v):
                 if isinstance(v, HypothesisProvided):
                     return strategy(v.value, settings)
+                elif _is_autoderive(v):
+                    from hypothesis.auto import Arbitrary
+                    return Arbitrary[v]
                 else:
                     return sd.just(v)
 
@@ -664,5 +667,15 @@ def find(specifier, condition, settings=None, random=None, storage=None):
             )
         raise NoSuchExample(get_pretty_function_description(condition))
 
+
+def _is_autoderive(x):
+    from hypothesis.utils.conventions import UniqueIdentifier
+    if isinstance(x, UniqueIdentifier) and x.identifier == 'autoderive':
+        try:
+            from hypothesis.auto import autoderive
+            return x == autoderive
+        except ImportError:
+            return False
+    return False
 
 load_entry_points()
