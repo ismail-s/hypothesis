@@ -14,25 +14,27 @@
 #
 # END HEADER
 
+from __future__ import division, print_function, absolute_import
+
 import sys
 from collections import namedtuple
+
+from tests.common.basic import Bitfields
+from hypothesis.settings import Settings
+from hypothesis.strategies import just, none, sets, text, basic, lists, \
+    binary, builds, floats, one_of, tuples, randoms, booleans, decimals, \
+    integers, fractions, recursive, streaming, frozensets, dictionaries, \
+    sampled_from, complex_numbers, fixed_dictionaries
+from hypothesis.utils.show import show
+from hypothesis.strategytests import templates_for
+from hypothesis.internal.debug import timeout
+from hypothesis.internal.compat import hrange
+from hypothesis.searchstrategy.narytree import n_ary_tree
 
 try:
     import pytest
 except ImportError:
     pytest = None
-
-from hypothesis.settings import Settings
-from hypothesis.internal.debug import timeout
-from hypothesis.strategytests import templates_for
-from tests.common.basic import Bitfields
-from hypothesis.strategies import integers, floats, just, one_of, \
-    sampled_from, streaming, basic, lists, booleans, dictionaries, tuples, \
-    frozensets, complex_numbers, sets, text, binary, decimals, fractions, \
-    none, randoms, builds, fixed_dictionaries, recursive
-from hypothesis.internal.compat import hrange
-from hypothesis.searchstrategy.narytree import n_ary_tree
-from hypothesis.utils.show import show
 
 
 settings = Settings(max_examples=100, timeout=4)

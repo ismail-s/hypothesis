@@ -13,3 +13,5 @@
 # obtain one at http://mozilla.org/MPL/2.0/.
 #
 # END HEADER
+
+from __future__ import division, print_function, absolute_import

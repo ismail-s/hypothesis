@@ -14,9 +14,11 @@
 #
 # END HEADER
 
-import pkg_resources
-from hypothesis.settings import Settings, note_deprecation
+from __future__ import division, print_function, absolute_import
 
+import pkg_resources
+
+from hypothesis.settings import Settings, note_deprecation
 
 loaded = set()
 

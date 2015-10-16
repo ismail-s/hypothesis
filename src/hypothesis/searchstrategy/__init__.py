@@ -18,14 +18,15 @@
 to explore data."""
 
 
-from .strategies import SearchStrategy, strategy
-from .basic import BasicStrategy
+from __future__ import division, print_function, absolute_import
 
-from . import numbers as s1
-from . import collections as s2
-from . import strings as s3
 from . import misc as s4
+from . import numbers as s1
 from . import streams as s5
+from . import strings as s3
+from . import collections as s2
+from .basic import BasicStrategy
+from .strategies import strategy, SearchStrategy
 
 # Placate flake8
 loaded = [s1, s2, s3, s4, s5]

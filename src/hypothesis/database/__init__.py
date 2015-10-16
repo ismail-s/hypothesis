@@ -14,9 +14,11 @@
 #
 # END HEADER
 
-from hypothesis.searchstrategy.strategies import BadData
-from hypothesis.database.formats import JSONFormat
+from __future__ import division, print_function, absolute_import
+
 from hypothesis.database.backend import SQLiteBackend
+from hypothesis.database.formats import JSONFormat
+from hypothesis.searchstrategy.strategies import BadData
 
 
 class Storage(object):

@@ -23,13 +23,15 @@ failing examples it finds.
 """
 
 
-from hypothesis.searchstrategy import strategy
-from hypothesis.settings import Settings, Verbosity
-from hypothesis.version import __version_info__, __version__
-from hypothesis.core import given, assume, find, example
+from __future__ import division, print_function, absolute_import
 
 # Force strategy extensions to be loaded here
 import hypothesis.strategies as unused
+from hypothesis.core import find, given, assume, example
+from hypothesis.version import __version__, __version_info__
+from hypothesis.settings import Settings, Verbosity
+from hypothesis.searchstrategy import strategy
+
 [unused]
 
 __all__ = [
